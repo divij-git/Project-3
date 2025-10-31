@@ -46,7 +46,6 @@ disp(rootsTable);
 
 %% Part 2 Problem 2
 %Find the corresponding Gaussian Weights
-%Update n and Li for other polynomials 
 syms x
 n=5;
 for i = 1:n
@@ -59,4 +58,25 @@ for i = 1:n
     alpha_i = double(vpa(int(Li, x, -1, 1), 16));
     fprintf('Weight %d: %.16g\n', i, alpha_i);
 end
-disp(alpha_i)
+
+%% Part 3 Problem 1
+Q = my_single_integral(@(t) t.^2, 0, 1)
+%Exact answer is 1/3
+Q = my_single_integral(@sin, 0, pi)
+%Exact answer is 2
+
+%Include some readings about this in write up
+
+%% Part 3 Problem 2
+U = @(x, y) (2*y.*sin(x) + (cos(x)).^2) ./ sqrt(1 - y.^2);
+G = @(x) 0;
+H = @(x) sin(x);
+W = my_double_integral(U, 0, pi/4, G, H);
+fprintf('W = %.16f\n', W);
+%% Part 4 Problem 1
+
+%Shi idk
+
+
+%% Part 4 Problem 2
+
